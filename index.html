@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOUPOU</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input {
+            margin: 10px;
+            padding: 8px;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            border-radius: 4px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Bienvenue sur la page HOUPOU</h1>
+
+    <div id="ageCheck">
+        <label for="age">Entrez votre âge :</label>
+        <input type="number" id="age" placeholder="Votre âge">
+        <button onclick="checkAge()">Valider</button>
+    </div>
+
+    <div id="personalInfo" style="display: none;">
+        <h2>Félicitations, vous faites partie de la famille HOUPOU !</h2>
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" placeholder="Votre nom">
+        <br>
+        <label for="prenom">Prénom :</label>
+        <input type="text" id="prenom" placeholder="Votre prénom">
+        <br>
+        <label for="sexe">Sexe :</label>
+        <select id="sexe">
+            <option value="Homme">Homme</option>
+            <option value="Femme">Femme</option>
+            <option value="Autre">Autre</option>
+        </select>
+        <br><br>
+        <button onclick="submitInfo()">Soumettre</button>
+    </div>
+
+    <div id="mineurMessage" style="display: none;">
+        <h2>Désolé, vous êtes mineur. Vous ne pouvez pas rejoindre la famille HOUPOU pour l'instant.</h2>
+    </div>
+
+    <script>
+        function checkAge() {
+            var age = document.getElementById('age').value;
+            if (age < 18) {
+                document.getElementById('mineurMessage').style.display = 'block';
+                document.getElementById('ageCheck').style.display = 'none';
+            } else {
+                document.getElementById('ageCheck').style.display = 'none';
+                document.getElementById('personalInfo').style.display = 'block';
+            }
+        }
+
+        function submitInfo() {
+            var nom = document.getElementById('nom').value;
+            var prenom = document.getElementById('prenom').value;
+            var sexe = document.getElementById('sexe').value;
+            alert("Félicitations " + prenom + " " + nom + " (" + sexe + ") ! Vous faites partie de la famille HOUPOU !");
+        }
+    </script>
+
+</body>
+</html>
